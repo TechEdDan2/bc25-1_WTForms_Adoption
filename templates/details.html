@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} {{pet.name}} Details{% endblock %}
+{% block content %}
+<div class="container justify-content-center align-items-center" style="width: 40rem; border: 1px solid black;">
+
+    <div class="card mx-auto" style="width: 20rem;">
+        <img src="{{pet.image_url()}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{pet.name}}</h5>
+            <!-- <p class="card-text"></p> -->
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Details
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Notes: <strong>{{pet.notes}}</strong>
+                            <br>
+                            <ul>
+                                <li>Species: {{pet.species}}</li>
+                                <li>Age: {{pet.age}}</li>
+                                <li>Available: {% if pet.available %}Yes{% else %}No{% endif %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/" class="btn btn-primary">Home</a>
+            <a href="/pet/{{pet.id}}/edit" class="btn btn-warning">Edit</a>
+            <form action="/pet/{{ pet.id }}/delete" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want to delete this pet?');">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+{%endblock%}

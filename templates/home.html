@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to the WTForms Adoption Agency</h1>
+<p>This is a simple Flask application.</p>
+
+<!-- This is where I will display the pets that are available -->
+<div class="container text-center justify-content-center align-items-center">
+    <div class="row child">
+        {% for pet in pets %}
+        <div class="card" style="width: 18rem">
+            <img src="{{pet.image_url()}}" alt="Image of {{pet.name}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{pet.name}}</h5>
+                <p class="card-text">
+                    {% if pet.available %}
+                    <mark><strong>Available for adoption</strong></mark>
+                    {% else %}
+                    Not available for adoption
+                    {% endif %}
+                </p>
+                <!-- Link to the Details page -->
+                <a href="/pets/{{pet.id}}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+
+
+{% endblock %}
