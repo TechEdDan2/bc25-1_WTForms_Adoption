@@ -70,7 +70,7 @@ A simple Flask application for managing pet adoptions. Users can view available 
 
 ### Continued development
 - This is a basic application and doesn't include features like user authentication, password management
-- The code needs to be refactored to reduce duplication. I would like to learn about Jinja2’s “include” directive, and figure out how I can factor out that common code.  
+- The code needs to be refactored to reduce duplication. 
 - In the next update I hope to add more features and functionalities
 
 ## Author
